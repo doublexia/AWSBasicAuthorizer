@@ -21,8 +21,8 @@ secretKey	<user secret key>
 1. Create a directory
 2. Create a file app.py with above content
 3. Install requests and requests_aws4auth 
-  * `pip3 install --target=. requests`
-  * `pip3 install --target=. requests_aws4auth`
+   * `pip3 install --target=. requests`
+   * `pip3 install --target=. requests_aws4auth`
 5. (Do not install boto3)
 6. Create a zip file for the files under this directory: `zip -r ../callDrpil.zip *`
 7. Go to AWS console, create Lambda function from the zip  using type Python 3.7
