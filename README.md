@@ -20,13 +20,15 @@ secretKey	<user secret key>
 #### Steps
 1. Create a directory
 2. Create a file app.py with above content
-3. Install requests and requests_aws4auth `pip3 install --target=. requests` and `pip3 install --target=. requests_aws4auth`
-4. (Do not install boto3)
-5. Create a zip file for the files under this directory: `zip -r ../callDrpil.zip *`
-6. Go to AWS console, create Lambda function from the zip  using type Python 3.7
-7. Or use command `aws lambda update-function-code --function-name=callDrpil --region=us-west-2 --zip-file fileb://callDrpil.zip`
-8. Add secretsmanager:GetSecretValue permission into the Lambda execution role.
-9. Test the Lambda function on the console.
+3. Install requests and requests_aws4auth 
+  * `pip3 install --target=. requests`
+  * `pip3 install --target=. requests_aws4auth`
+5. (Do not install boto3)
+6. Create a zip file for the files under this directory: `zip -r ../callDrpil.zip *`
+7. Go to AWS console, create Lambda function from the zip  using type Python 3.7
+8. Or use command `aws lambda update-function-code --function-name=callDrpil --region=us-west-2 --zip-file fileb://callDrpil.zip`
+9. Add secretsmanager:GetSecretValue permission into the Lambda execution role.
+10. Test the Lambda function on the console.
 
 ## Basic Authentication Authorizer
 #### The code
