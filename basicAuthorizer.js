@@ -101,7 +101,7 @@ var generatePolicy = function(principalId, effect, resource) {
     };
 
     // Asign a usage identifier API Key if it's needed
-    authResponse.usageIdentifierKey = "callDrpilDelegator-Alpha;
+    authResponse.usageIdentifierKey = "callDrpilDelegator-Alpha";
 
 console.log("PolicyDoc=", authResponse)
 
