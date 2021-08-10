@@ -57,8 +57,8 @@ secretKey	<user secret key>
 1. fill in key pair and ApiGate URL, javac AbstractTestCase.java
 2. java AbstractTestCase to get a presigned url
 3. upload to the presigned url
-  * string: `curl -H "x-amz-server-side-encryption:AES256" --request PUT --data "<string>" --url "<apigw-url>"`
-  * text file: `curl -H "x-amz-server-side-encryption:AES256" --request PUT --data @<filepath> --url "<apigw-url>"`
-  * binary file: `curl -H "x-amz-server-side-encryption:AES256" --request PUT --data-binary @<filepath> --url "<apigw-url>"`
+  * string: `curl -H "x-amz-server-side-encryption:AES256" --request PUT --data "<string>" --url "<presigned-url>"`
+  * text file: `curl -H "x-amz-server-side-encryption:AES256" --request PUT --data @<filepath> --url "<presigned-url>"`
+  * binary file: `curl -H "x-amz-server-side-encryption:AES256" --request PUT --data-binary @<filepath> --url "<presigned-url>"`
 
 
