@@ -49,14 +49,6 @@ public abstract class AbstractTestCase {
     protected static final String ACCESS_KEY_SECRET = "<secret-key>";
     protected static final String URL_PREFIX        = "<invoke-url>";
 
-//
-//
-//    IBM UI  (using u/p) -> CEVA AWS (...) -- AWS IAM --> DRPIL using keys
-//
-//    CEVA:
-//        API gateway -> DRPIL API Gateway (?)
-//       custom authorizer to support u/p
-//        L in Python -> call DRPIL
     /**
      * Make a post request to our API Gateway.
      * Our gateway is an AWS API Gateway with specific prefix, with no apiKey, accepts POST,
