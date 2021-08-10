@@ -2,7 +2,8 @@
 ## Credentials
 #### Create a user
 1. Go to AWS console, IAM
-2. Create a user, generate access key/secret key pair
+2. Create a user, attach policy **AmazonAPIGatewayInvokeFullAccess**, generate access key/secret key pair
+3. write down the user's ARN
 
 #### Create secrets in Secret Manager
 1. Go to Secret Manager on AWS console, `Store a new secret`
@@ -51,5 +52,13 @@ secretKey	<user secret key>
 9. Test using Postman.
 
 
+
+## Test AbstractTestCase
+1. fill in key pair and ApiGate URL, javac AbstractTestCase.java
+2. java AbstractTestCase to get a presigned url
+3. upload to the presigned url
+  * string: `curl -H "x-amz-server-side-encryption:AES256" --request PUT --data "<string>" --url "<apigw-url>"`
+  * text file: `curl -H "x-amz-server-side-encryption:AES256" --request PUT --data @<filepath> --url "<apigw-url>"`
+  * binary file: `curl -H "x-amz-server-side-encryption:AES256" --request PUT --data-binary @<filepath> --url "<apigw-url>"`
 
 
