@@ -11,7 +11,7 @@ public class FileUploader {
         URL url = new URL(presignedURL);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setDoOutput(true);
-        connection.setRequestProperty("Content-Type","text/plain");
+        connection.setRequestProperty("Content-Type","application/octet-stream");
         connection.setRequestProperty("x-amz-server-side-encryption","AES256");
         connection.setRequestMethod("PUT");
         OutputStreamWriter out = new OutputStreamWriter(connection.getOutputStream(), StandardCharsets.UTF_8);
