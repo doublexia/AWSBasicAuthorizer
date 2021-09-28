@@ -1,5 +1,9 @@
 # Authenticate via Amazon Cognito and Call Amazon APIs
 ### Steps
+Prerequisite:
+1. (Amazon) Invite CEVA user in Reseller Portal.
+2. (CEVA) Sign in to Reseller Portal and change password. 
+
 1. Create a Maven project
 2. Use build:
 ```
