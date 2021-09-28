@@ -1,3 +1,42 @@
+# Authenticate via Amazon Cognito and Call Amazon APIs
+### Steps
+1. Create a Maven project
+2. Use build:
+```
+<build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+```
+3. Add dependencies:
+```
+<dependencies>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-cognitoidentity</artifactId>
+            <version>1.12.74</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20210307</version>
+        </dependency>
+</dependencies>
+```
+4. Download [AuthenticationHelper](https://github.com/doublexia/aws-cognito-java-desktop-app/blob/master/src/main/java/com/amazonaws/sample/cognitoui/AuthenticationHelper.java) and add it into the project.
+5. Download [CallHDSS](CallHDSS.java) and [TestCognito](TestCognito.java) and add them into the project.
+6. Edit TestCognito.
+7. Run TestCognito.
+
 # AWSBasicAuthorizer
 ## Credentials
 #### Create a user
