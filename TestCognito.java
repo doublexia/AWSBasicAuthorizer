@@ -52,7 +52,7 @@ public class TestCognito {
                     "requestDocumentUrl",
                     "{\n" + "   \"name\": \"POD-987654321-US-202109291123856.pdf\",\n" + "   \"type\": \"POD\",\n" +
                         "   \"keys\": [\n" + "      {\n" + "         \"key\": \"PRO\",\n" +
-                        "         \"value\": \"987654321\"n" + "      }\n" + "   ],\n" +
+                        "         \"value\": \"987654321\"\t\t\n" + "      }\n" + "   ],\n" +
                         "   \"description\": \"POD document\",\n" + "   \"mimeType\": \"application/pdf\",\n" +
                         "   \"requestSource\": \"CEVA\",\n" + "   \"locationId\": \"US\",\n" +
                         "   \"userId\": \"CEVA\"\n" + "}",
