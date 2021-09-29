@@ -18,7 +18,7 @@ import com.amazonaws.services.cognitoidentity.model.GetIdResult;
 import com.amazonaws.services.cognitoidp.model.NotAuthorizedException;
 
 public class TestCognito {
-    protected static final String URL_PREFIX = "url";
+    protected static final String URL_PREFIX = "endpoint-url";
 
     private static Map<String, PoolDetails> stageToPoolMap= new HashMap<>();
     static {
@@ -27,38 +27,48 @@ public class TestCognito {
             new PoolDetails("user-pool-id",
                 "identity-pool-id",
                 "client-id",
-                "region")
+                "aws-region")
         );
-
     }
 
     private long lastCachedTimestamp;
     private String cachedJWT;
     private String cachedIdentityId;
+    private AWSSessionCredentials cachedSessionCredentials;
 
     public static void main(String[] args) {
         TestCognito testCognito = new TestCognito();
 
-        try {
-            AWSSessionCredentials credentials = testCognito.authenticate(
-                stageToPoolMap.get("beta"),
-                "user-name",
-                "passwd"
-            );
+        int numOfTimes = 5;
 
-            String response = new CallHDSS().post(URL_PREFIX,
-                "requestDocumentUrl",
-                "{\n" + "    \"name\":\"name\",\n" + "    \"type\":\"type\",\n" + "    \"keys\": [\n" +
-                    "        {\"key\": \"RMA2\",\"value\":\"RRabcdefgh\"},\n" +
-                    "        {\"key\":\"SHP2\", \"value\":\"SO12345678\"}\n" + "        ],\n" +
-                    "        \"description\": \"description of this document\",\n" +
-                    "        \"requestSource\": \"SOURCE\",\n" + "        \"locationId\":\"LocationID\",\n" +
-                    "        \"userId\": \"MyName\"\n" + "}\n",
-                credentials.getAWSAccessKeyId(),
-                credentials.getAWSSecretKey(),
-                credentials.getSessionToken()
-            );
-            System.out.println("Response = " + response);
+        try {
+            while (numOfTimes-- > 0) {
+                AWSSessionCredentials credentials = testCognito.authenticate(stageToPoolMap.get("beta"),
+                    "user-name",
+                    "passwd"
+                );
+
+                String response = new CallHDSS().post(URL_PREFIX,
+                    "requestDocumentUrl",
+                    "{\n" + "   \"name\": \"POD-987654321-US-202109291123856.pdf\",\n" + "   \"type\": \"POD\",\n" +
+                        "   \"keys\": [\n" + "      {\n" + "         \"key\": \"PRO\",\n" +
+                        "         \"value\": \"987654321\"n" + "      }\n" + "   ],\n" +
+                        "   \"description\": \"POD document\",\n" + "   \"mimeType\": \"application/pdf\",\n" +
+                        "   \"requestSource\": \"CEVA\",\n" + "   \"locationId\": \"US\",\n" +
+                        "   \"userId\": \"CEVA\"\n" + "}",
+                    credentials.getAWSAccessKeyId(),
+                    credentials.getAWSSecretKey(),
+                    credentials.getSessionToken()
+                );
+                System.out.println("Response (" + numOfTimes + ")= " + response);
+
+                // sleep 15m
+                try {
+                    Thread.sleep(TimeUnit.MINUTES.toMillis(15));
+                } catch (Exception e) {
+                    // nothing
+                }
+            }
         } catch (NotAuthorizedException e) {
             System.out.println("Exception =" + e.getMessage());
             e.printStackTrace();
@@ -73,35 +83,39 @@ public class TestCognito {
     }
 
 
-    public AWSSessionCredentials authenticate(PoolDetails poolDetails, String userName, String password) throws Exception {
-        cacheJWTAndIdentityId(poolDetails, userName, password);
+    public AWSSessionCredentials authenticate(PoolDetails poolDetails, String userName, String password) {
+        if (cachedSessionCredentials == null || System.currentTimeMillis() - lastCachedTimestamp > TimeUnit.HOURS.toMillis(1)) {
+            lastCachedTimestamp = System.currentTimeMillis();
 
-        String idpUrl = getIdpUrl(poolDetails);
+            cacheJWTAndIdentityId(poolDetails, userName, password);
 
-        GetCredentialsForIdentityRequest request = new GetCredentialsForIdentityRequest();
-        request.setIdentityId(cachedIdentityId);
-        request.addLoginsEntry(idpUrl, cachedJWT);
+            String idpUrl = getIdpUrl(poolDetails);
 
-        AmazonCognitoIdentity provider = createCognitoItentity(poolDetails);
+            GetCredentialsForIdentityRequest request = new GetCredentialsForIdentityRequest();
+            request.setIdentityId(cachedIdentityId);
+            request.addLoginsEntry(idpUrl, cachedJWT);
 
-        GetCredentialsForIdentityResult result = provider.getCredentialsForIdentity(request);
+            AmazonCognitoIdentity provider = createCognitoItentity(poolDetails);
 
-        // Create the session credentials object
-        AWSSessionCredentials sessionCredentials = new BasicSessionCredentials(
-            result.getCredentials().getAccessKeyId(),
-            result.getCredentials().getSecretKey(),
-            result.getCredentials().getSessionToken()
-        );
+            GetCredentialsForIdentityResult result = provider.getCredentialsForIdentity(request);
 
-        System.out.println("SessionCredentials=("+ sessionCredentials.getAWSAccessKeyId() + ", " + sessionCredentials.getAWSSecretKey() +")");
+            // Create the session credentials object
+            AWSSessionCredentials sessionCredentials = new BasicSessionCredentials(
+                result.getCredentials().getAccessKeyId(),
+                result.getCredentials().getSecretKey(),
+                result.getCredentials().getSessionToken()
+            );
 
-        return sessionCredentials;
+            System.out.println("SessionCredentials=(" + sessionCredentials.getAWSAccessKeyId() + ", " +
+                sessionCredentials.getAWSSecretKey() + ")");
+
+            cachedSessionCredentials = sessionCredentials;
+        }
+
+        return cachedSessionCredentials;
     }
 
     private void cacheJWTAndIdentityId(PoolDetails poolDetails, String userName, String password) {
-        if (cachedJWT == null || cachedIdentityId == null || System.currentTimeMillis() - lastCachedTimestamp > TimeUnit.HOURS.toMillis(1)) {
-            lastCachedTimestamp = System.currentTimeMillis();
-
             AuthenticationHelper helper = new AuthenticationHelper(poolDetails.userPoolId, poolDetails.clientId, null, poolDetails.region);
 
             String jwt = helper.PerformSRPAuthentication(userName, password);
@@ -121,7 +135,6 @@ public class TestCognito {
 
             cachedJWT = jwt;
             cachedIdentityId = idResult.getIdentityId();
-        }
     }
 
     private String getIdpUrl(PoolDetails poolDetails) {
