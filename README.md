@@ -42,6 +42,7 @@ PoC:
 6. Edit TestCognito.
 7. Run TestCognito.
 
+~~
 # AWSBasicAuthorizer
 ## Credentials
 #### Create a user
@@ -95,7 +96,7 @@ secretKey	<user secret key>
 8. Deploy API
 9. Test using Postman.
 
-
+~~
 
 ## Test AbstractTestCase
 1. fill in key pair and ApiGate URL, javac AbstractTestCase.java
