@@ -1,8 +1,9 @@
 # Authenticate via Amazon Cognito and Call Amazon APIs
 ### Steps
 Prerequisite:
-1. (Amazon) Invite CEVA user in Reseller Portal.
-2. (CEVA) Sign in to Reseller Portal and change password. 
+1. Carrier tells Amazon their email(s) that will be used for account creation in Reseller Portal.
+1. (Amazon) Invites Carrier, eg., CEVA user in Reseller Portal.
+2. (Carrier) Signs in to Reseller Portal and changes password. 
 
 PoC:
 1. Create a Maven project
