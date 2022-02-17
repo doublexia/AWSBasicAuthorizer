@@ -4,7 +4,7 @@ Download [CallHdssViaCognito.jar](https://github.com/doublexia/AWSBasicAuthorize
 1. To see usage, run `java -jar CallHdssViaCognito.jar`
 2. Sample usage: 
 ```
-java -jar CallHdssViaCognito.jar -u testcarrier -p T3stP@ss -s beta -m '{
+java -jar CallHdssViaCognito.jar -u testcarrier -p actual_password -s beta -m '{
         "proNumber": "12345678",
         "filename": "POD_9175592178_US_2021090114267.pdf",
         "type": "POD",
