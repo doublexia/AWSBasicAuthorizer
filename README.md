@@ -1,6 +1,20 @@
 # Authenticate via Amazon Cognito and Call Amazon APIs
 ## Use standalone Java app
-
+Download [CallHdssViaCognito.jar](https://github.com/doublexia/AWSBasicAuthorizer/blob/main/CallHdssViaCognito.jar).
+1. To see usage, run `java -jar CallHdssViaCognito.jar`
+2. Sample usage: 
+```
+java -jar CallHdssViaCognito.jar -u testcarrier -p T3stP@ss -s beta -m '{
+        "proNumber": "12345678",
+        "filename": "POD_9175592178_US_2021090114267.pdf",
+        "type": "POD",
+        "description": "POD document",
+        "mimeType": "application/pdf",
+        "requestSource": "CEVA",
+        "locationId": "US",
+        "userId": "CEVA"
+}' -f ~/Downloads/mydocument.pdf
+```
 ## Create your own app or embed in your existing app
 ### Steps
 Prerequisite:
