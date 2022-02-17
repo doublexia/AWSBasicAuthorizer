@@ -1,4 +1,7 @@
 # Authenticate via Amazon Cognito and Call Amazon APIs
+## Use standalone Java app
+
+## Create your own app or embed in your existing app
 ### Steps
 Prerequisite:
 1. Carrier tells Amazon their email(s) that will be used for account creation in Reseller Portal.
