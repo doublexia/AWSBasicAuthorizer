@@ -2,9 +2,15 @@
 ## Use standalone Java app
 Download [CallHdssViaCognito.jar](https://github.com/doublexia/AWSBasicAuthorizer/blob/main/CallHdssViaCognito.jar).
 1. To see usage, run `java -jar CallHdssViaCognito.jar`
-2. Sample usage: 
+2. Usage: 
 ```
-java -jar CallHdssViaCognito.jar -u testcarrier -p actual_password -s beta -m '{
+java -jar CallHdssViaCognito.jar -s stage -u user -p password -f file_to_upload -m metadata
+```
+where stage can be either beta or prod, file_to_upload is a file path and metadata is in Json format.
+
+3. Sample usage: 
+```
+java -jar CallHdssViaCognito.jar -s beta -u testcarrier -p actual_password -f ~/Downloads/mydocument.pdf -m '{
         "proNumber": "12345678",
         "filename": "POD_9175592178_US_2021090114267.pdf",
         "type": "POD",
@@ -13,7 +19,7 @@ java -jar CallHdssViaCognito.jar -u testcarrier -p actual_password -s beta -m '{
         "requestSource": "CEVA",
         "locationId": "US",
         "userId": "CEVA"
-}' -f ~/Downloads/mydocument.pdf
+}' 
 ```
 ## Create your own app or embed in your existing app
 ### Steps
