@@ -10,17 +10,35 @@ where stage can be either beta or prod, file_to_upload is a file path and metada
 
 3. Sample usage: 
 ```
-java -jar CallHdssViaCognito.jar -s beta -u testcarrier -p actual_password -f ~/Downloads/mydocument.pdf -m '{
-        "proNumber": "12345678",
-        "filename": "POD_9175592178_US_2021090114267.pdf",
-        "type": "POD",
-        "description": "POD document",
-        "mimeType": "application/pdf",
-        "requestSource": "CEVA",
-        "locationId": "US",
-        "userId": "CEVA"
+java -jar CallHdssViaCognito.jar -s beta -u testcarrier -p actual_password -f /Users/Username/Downloads/test-doc.pdf -m '{
+    "trackingNumber": "TestProNumber",
+    "returnId": "TestReturnId",
+    "shipmentRequestId": "Shipment-Request-Id",
+    "filename": "test-doc.pdf",
+    "type": "POD",
+    "description": "Test PDF attachment",
+    "mimeType": "application/pdf",
+    "carrierName": "TestCarrierName",
+    "carrierReferenceNumber": "Carrier-Reference-#",
+    "locationId": "US",
+    "userId": "TestUser",
+    "tenantId": "ARPOD"
 }' 
 ```
+4. Meta format:
+  * trackingNumber: __required__,the shipment tracking number, aka, HAWB#, PRO#
+  * returnId: optional, the associated return id
+  * shipmentRequestId: optional, the associated shipment request id
+  * filename: __required__, the document file name
+  * type: __required__, the document type, POD, BOL, etc.
+  * description: optional, the description about the document
+  * mimeType: optional, the mime type , for example, application/pdf
+  * carrierName: __rquired__, the carrier name
+  * carrierReferenceNumber: optioanl, the carrier's reference number
+  * locationId: __required__, the location identifier, can be generic as a country name or specific as a branch name
+  * userId: __required__, the user/operator id
+  * tenantId: __required__, must be ARPOD
+
 ## Create your own app or embed in your existing app
 ### Steps
 Prerequisite:
