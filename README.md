@@ -25,19 +25,19 @@ java -jar CallHdssViaCognito.jar -s beta -u testcarrier -p actual_password -f /U
     "tenantId": "ARPOD"
 }' 
 ```
-4. Meta format:
-  * trackingNumber: __required__,the shipment tracking number, aka, HAWB#, PRO#
-  * returnId: optional, the associated return id
-  * shipmentRequestId: optional, the associated shipment request id
-  * filename: __required__, the document file name
-  * type: __required__, the document type, POD, BOL, etc.
-  * description: optional, the description about the document
-  * mimeType: optional, the mime type , for example, application/pdf
-  * carrierName: __rquired__, the carrier name
-  * carrierReferenceNumber: optioanl, the carrier's reference number
-  * locationId: __required__, the location identifier, can be generic as a country name or specific as a branch name
-  * userId: __required__, the user/operator id
-  * tenantId: __required__, must be ARPOD
+4. Metadata fields:
+    * trackingNumber: __required__,the shipment tracking number, aka, HAWB#, PRO#
+    * returnId: optional, the associated return id
+    * shipmentRequestId: optional, the associated shipment request id
+    * filename: __required__, the document file name
+    * type: __required__, the document type, POD, BOL, etc.
+    * description: optional, the description about the document
+    * mimeType: optional, the mime type , for example, application/pdf
+    * carrierName: __rquired__, the carrier name
+    * carrierReferenceNumber: optioanl, the carrier's reference number
+    * locationId: __required__, the location identifier, can be generic as a country name or specific as a branch name
+    * userId: __required__, the user/operator id
+    * tenantId: __required__, must be ARPOD
 
 ## Create your own app or embed in your existing app
 ### Steps
