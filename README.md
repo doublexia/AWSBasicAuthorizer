@@ -9,6 +9,7 @@ java -jar CallHdssViaCognito.jar -s stage -u user -p password -f file_to_upload 
 where stage can be either beta or prod, file_to_upload is a file path and metadata is in Json format.
 
 3. Sample usage: 
+(Linux, MacOs)
 ```
 java -jar CallHdssViaCognito.jar -s beta -u testcarrier -p actual_password -f /Users/Username/Downloads/test-doc.pdf -m '{
     "trackingNumber": "TestProNumber",
@@ -24,6 +25,10 @@ java -jar CallHdssViaCognito.jar -s beta -u testcarrier -p actual_password -f /U
     "userId": "TestUser",
     "tenantId": "ARPOD"
 }' 
+```
+(Windows)
+```
+java -jar CallHdssViaCognito.jar -s devo -u testcarrier -p actual_password -m "{\"trackingNumber\": \"testProNumber\",\"returnId\": \"xyz\",\"shipmentRequestId\": \"abc\",\"filename\": \"actual_filename.pdf\",\"type\": \"POD\",\"description\": \"POD Document\",\"mimeType\": \"application/pdf\",\"carrierName\": \"actual_carrier_name\",\"carrierReferenceNumber\": \"actual_refer_number\",\"locationId\": \"LocationCode\",\"userId\": \"TestUser\",\"tenantId\": \"ARPOD\"}" -f "path_of_file_to_be_uploaded"
 ```
 4. Metadata fields:
     * trackingNumber: __required__,the shipment tracking number, aka, HAWB#, PRO#
