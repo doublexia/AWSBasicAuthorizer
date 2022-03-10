@@ -28,7 +28,7 @@ java -jar CallHdssViaCognito.jar -s beta -u testcarrier -p actual_password -f /U
 ```
 (Windows)
 ```
-java -jar CallHdssViaCognito.jar -s devo -u testcarrier -p actual_password -m "{\"trackingNumber\": \"testProNumber\",\"returnId\": \"xyz\",\"shipmentRequestId\": \"abc\",\"filename\": \"actual_filename.pdf\",\"type\": \"POD\",\"description\": \"POD Document\",\"mimeType\": \"application/pdf\",\"carrierName\": \"actual_carrier_name\",\"carrierReferenceNumber\": \"actual_refer_number\",\"locationId\": \"LocationCode\",\"userId\": \"TestUser\",\"tenantId\": \"ARPOD\"}" -f "path_of_file_to_be_uploaded"
+java -jar CallHdssViaCognito.jar -s devo -u testcarrier -p actual_password -f "path_of_file_to_be_uploaded" -m "{\"trackingNumber\": \"testProNumber\",\"returnId\": \"xyz\",\"shipmentRequestId\": \"abc\",\"filename\": \"actual_filename.pdf\",\"type\": \"POD\",\"description\": \"POD Document\",\"mimeType\": \"application/pdf\",\"carrierName\": \"actual_carrier_name\",\"carrierReferenceNumber\": \"actual_refer_number\",\"locationId\": \"LocationCode\",\"userId\": \"TestUser\",\"tenantId\": \"ARPOD\"}" 
 ```
 4. Metadata fields:
     * trackingNumber: __required__,the shipment tracking number, aka, HAWB#, PRO#
