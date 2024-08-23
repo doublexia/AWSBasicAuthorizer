@@ -32,11 +32,11 @@ java -jar CallHdssViaCognito.jar -s devo -u testcarrier -p actual_password -f "p
 ```
 
 ### Metadata fields:
-proNumber: required,the shipment tracking number, aka, HAWB#, PRO#
-filename: required, the document file name
-type: required, the document type, POD, BOL, etc.
-description: optional, the description about the document
-mimeType: optional, the mime type, for example, application/pdf
-requestSource: required, the carrier name
-locationId: required, the location identifier, can be generic as a country name or specific as a branch name
-userId: required, the user/operator id
+* proNumber: required,the shipment tracking number, aka, HAWB#, PRO#
+* filename: required, the document file name
+* type: required, the document type, POD, BOL, etc.
+* description: optional, the description about the document
+* mimeType: optional, the mime type, for example, application/pdf
+* requestSource: required, the carrier name
+* locationId: required, the location identifier, can be generic as a country name or specific as a branch name
+* userId: required, the user/operator id
