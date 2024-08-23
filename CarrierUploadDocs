@@ -1,7 +1,13 @@
 ## Use standalone Java app
+
+Download [CallHdssViaCognito.jar](https://github.com/doublexia/AWSBasicAuthorizer/blob/main/CallHdssViaCognito.jar).
+
 To see usage, run java -jar CallHdssViaCognito.jar
+
 Usage:
+```
 java -jar CallHdssViaCognito.jar -a -s stage -u user -p password -f file_to_upload -m metadata
+```
 where stage can be either beta or prod, file_to_upload is a file path and metadata is in Json format.
 
 Sample usage:
