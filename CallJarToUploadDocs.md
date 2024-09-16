@@ -10,7 +10,7 @@ java -jar CallHdssViaCognito.jar -a -s stage -u user -p password -f file_to_uplo
 ```
 where stage can be either beta or prod, file_to_upload is a file path and metadata is in Json format.
 
-Sample usage:
+Sample usage (use beta for testing):
 
 (Linux, MacOs)
 ```
@@ -28,7 +28,7 @@ java -jar CallHdssViaCognito.jar -a -s beta -u testcarrier -p actual_password -f
 
 (Windows)
 ```
-java -jar CallHdssViaCognito.jar -a -s devo -u testcarrier -p actual_password -f "path_of_file_to_be_uploaded" -m "{\"proNumber\": \"<proNumber-or-trackingId>\", \"filename\": \"<doc-filename.pdf>\", \"type\": \"POD/BOL\", \"description\": \"<doc description>\", \"mimeType\": \"application/pdf\", \"requestSource\": \"<carrierName>\", \"locationId\": \"<country-or-city-such-as-US>\", \"userId\": \"<user-id>\" }" 
+java -jar CallHdssViaCognito.jar -a -s beta -u testcarrier -p actual_password -f "path_of_file_to_be_uploaded" -m "{\"proNumber\": \"<proNumber-or-trackingId>\", \"filename\": \"<doc-filename.pdf>\", \"type\": \"POD/BOL\", \"description\": \"<doc description>\", \"mimeType\": \"application/pdf\", \"requestSource\": \"<carrierName>\", \"locationId\": \"<country-or-city-such-as-US>\", \"userId\": \"<user-id>\" }" 
 ```
 
 ### Metadata fields:
@@ -40,3 +40,7 @@ java -jar CallHdssViaCognito.jar -a -s devo -u testcarrier -p actual_password -f
 * requestSource: required, the carrier name
 * locationId: required, the location identifier, can be generic as a country name or specific as a branch name
 * userId: required, the user/operator id
+
+### Stage values
+* __beta__ for testing
+* __prod__ for production
