@@ -14,7 +14,7 @@ Sample usage:
 
 (Linux, MacOs)
 ```
-java -jar CallHdssViaCognito.jar -s beta -u testcarrier -p actual_password -f /Users/Username/Downloads/test-doc.pdf -m '{
+java -jar CallHdssViaCognito.jar -a -s beta -u testcarrier -p actual_password -f /Users/Username/Downloads/test-doc.pdf -m '{
   "proNumber": "<proNumber-or-trackingId>",
   "filename": "<doc-filename.pdf>",
   "type": "POD/BOL",
@@ -28,7 +28,7 @@ java -jar CallHdssViaCognito.jar -s beta -u testcarrier -p actual_password -f /U
 
 (Windows)
 ```
-java -jar CallHdssViaCognito.jar -s devo -u testcarrier -p actual_password -f "path_of_file_to_be_uploaded" -m "{\"proNumber\": \"<proNumber-or-trackingId>\", \"filename\": \"<doc-filename.pdf>\", \"type\": \"POD/BOL\", \"description\": \"<doc description>\", \"mimeType\": \"application/pdf\", \"requestSource\": \"<carrierName>\", \"locationId\": \"<country-or-city-such-as-US>\", \"userId\": \"<user-id>\" }" 
+java -jar CallHdssViaCognito.jar -a -s devo -u testcarrier -p actual_password -f "path_of_file_to_be_uploaded" -m "{\"proNumber\": \"<proNumber-or-trackingId>\", \"filename\": \"<doc-filename.pdf>\", \"type\": \"POD/BOL\", \"description\": \"<doc description>\", \"mimeType\": \"application/pdf\", \"requestSource\": \"<carrierName>\", \"locationId\": \"<country-or-city-such-as-US>\", \"userId\": \"<user-id>\" }" 
 ```
 
 ### Metadata fields:
